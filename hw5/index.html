@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+</head>
+<body>
+<button id="btn1">輸入104學年度第1學期成績</button><br><br>
+<form name="form1" id="grade1" method="post" >
+    計概:<input name="calculator" type="text" size="8" class="a"><br>
+    微積分:<input name="integral" type="text" size="8" class="a"><br>
+    java程式語言:<input name="java" type="text" size="8" class="a"><br>
+    資訊入門：<input name="information" type="text" size="8" class="a"><br>
+</form>
+<button id="btn2">輸入104學年度第2學期成績</button><br><br>
+<form name="form2" id="grade2" method="post" >
+    計概:<input name="calculator" type="text" size="8" class="b"><br>
+    微積分:<input name="integral" type="text" size="8" class="b"><br>
+    java程式語言:<input name="java" type="text" size="8" class="b"><br>
+    資訊入門：<input name="information" type="text" size="8" class="b"><br>
+</form>
+<button id="btn3">輸入105學年度第1學期成績</button><br><br>
+<form name="form3" id="grade3" method="post" >
+    計概:<input name="calculator" type="text" size="8" class="c"><br>
+    微積分:<input name="integral" type="text" size="8" class="c"><br>
+    java程式語言:<input name="java" type="text" size="8" class="c"><br>
+    資訊入門：<input name="information" type="text" size="8" class="c"><br>
+</form>
+<button id="btn4">輸入105學年度第2學期成績</button><br><br>
+<form name="semester grade" id="grade4" method="post" >
+    計概:<input name="calculator" type="text" size="8" class="d"><br>
+    微積分:<input name="integral" type="text" size="8" class="d"><br>
+    java程式語言:<input name="java" type="text" size="8" class="d"><br>
+    資訊入門：<input name="information" type="text" size="8" class="d"><br>
+</form>
+<button id="btn5" >總平均</button>
+<button id="btn6">每學期平均</button>
+<button id="btn7">最高/最低成績</button>
+<p></p>
+</body>
+<script>
+    $("#btn1").click(function(){
+    $("#grade1").toggle();
+   });
+
+   $("#btn2").click(function(){
+      $("#grade2").toggle();
+     });   
+     
+   $("#btn3").click(function(){
+      $("#grade3").toggle();
+     });
+
+
+    $("#btn4").click(function(){
+      $("#grade4").toggle();
+     });
+
+   $("#btn5").click(function(){
+      var sum=0,count=0;
+      $("input:text").val(function(index,value){
+             count++;
+             sum=sum+parseInt(value);
+      });
+      $("p").html("總平均為"+sum/count+";");
+    });
+
+    $("#btn6").click(function(){
+
+       var count1=0,sum1=0;
+       $(".a").val(function(index,value){
+            count1++;
+            sum1=sum1+parseInt(value);
+       });
+
+       var count2=0,sum2=0;
+       $(".b").val(function(index,value){
+            count2++;
+            sum2=sum2+parseInt(value);
+       });
+        
+
+       var count3=0,sum3=0;
+       $(".c").val(function(index,value){
+            count3++;
+            sum3=sum3+parseInt(value);
+       });
+
+       var count4=0,sum4=0;
+       $(".d").val(function(index,value){
+            count4++;
+            sum4=sum4+parseInt(value);
+       });
+
+       $("p").html("104學年度第一學期平均為"+sum1/count1+";"+"104學年度第二學期平均為"+sum2/count2+";"+
+       "105學年度第一學期平均為"+sum3/count3+";"+"105學年度第二學期平均為"+sum4/count4+";");
+
+    });
+
+    $("#btn7").click(function(){
+      var max=0;
+      $("input:text").val(function(index,value){
+        if(parseInt(value)>max){
+            max=parseInt(value);
+        }
+       });
+       
+       var min=10^100;
+       $("input:text").val(function(index,value){
+        if(parseInt(value)<min){
+            min=parseInt(value);
+        }
+       });
+       
+       $("p").html("最高成績："+max+";"+"最低成績"+min);
+    });
+
+  </script>
+
+</html>

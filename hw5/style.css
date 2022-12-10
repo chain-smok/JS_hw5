@@ -1,0 +1,9 @@
+button{
+    background-color:rgb(34, 105, 185)
+}
+form{
+    background-color: aqua;
+}
+form.calculator{
+    color:brown;
+}
