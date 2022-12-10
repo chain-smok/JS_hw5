@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="style.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    
+    <script src="jquery_source/jquery-3.6.1.js"></script>
 </head>
 <body>
 <button id="btn1">輸入104學年度第1學期成績</button><br><br>
@@ -101,17 +100,11 @@
 
     $("#btn7").click(function(){
       var max=0;
+      var min=1000000;
       $("input:text").val(function(index,value){
-        if(parseInt(value)>max){
-            max=parseInt(value);
-        }
-       });
-       
-       var min=10^100;
-       $("input:text").val(function(index,value){
-        if(parseInt(value)<min){
-            min=parseInt(value);
-        }
+        a=parseInt(value);
+        max=Math.max(a,max);
+        min=Math.min(a,min)
        });
        
        $("p").html("最高成績："+max+";"+"最低成績"+min);
